@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>COVID-19 US States Visualization</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- noUiSlider CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,18 +46,18 @@
       <div class="state-info" id="state-info">
         <h3>State Statistics</h3>
         <p>Click on a state to view detailed COVID-19 statistics including cases and deaths.</p>
-        <p class="instruction">The colored map shows the selected metric. Change metrics or toggle between raw and normalized data using the controls above.</p>
-        <p>Click any state to see detailed information</p>
+        <p class="instruction">The colored map shows the selected metric within the date range. Adjust the date range slider to focus on specific time periods.</p>
+        <p>Data shown reflects <strong>changes</strong> within the selected date range, not just values on the end date.</p>
       </div>
     </div>
 
     <div class="legend-container">
-      <div class="legend-title" id="legend-title">Legend</div>
+      <div class="legend-title" id="legend-title">Total Deaths (Range)</div>
       <div id="legend"></div>
     </div>
   </div>
 
-  <!-- Load Scripts -->
+  
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://d3js.org/topojson.v3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>

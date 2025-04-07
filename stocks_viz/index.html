@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head>     
+    <meta charset="UTF-8" />     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>     
+    <title>COVID-19 and Stock Market Visualization</title>     
+    <link rel="stylesheet" href="style.css" />     
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">     
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css">     
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script> 
+</head> 
+<body>     
+    <div class="container">         
+        <div class="top-section">             
+            <div class="main-title">COVID-19 Cases vs Market Performance</div>             
+            <div class="date-range-container">                 
+                <div class="date-label">                     
+                    <span>Date Range:</span>                     
+                    <span id="date-range-display"></span>                 
+                </div>                 
+                <div class="sliders-container"></div>             
+            </div>         
+        </div>                  
+        <div class="content-section">             
+            <div class="stock-selector">                 
+                <h3>Select Stocks to Display</h3>                 
+                <div class="stock-section-tabs">                     
+                    <button class="tab-button active" data-tab="market-index">Market Index</button>                     
+                    <button class="tab-button" data-tab="vaccine">Vaccine</button>                     
+                    <button class="tab-button" data-tab="tech">Tech</button>                     
+                    <button class="tab-button" data-tab="finance">Finance</button>                     
+                    <button class="tab-button" data-tab="travel">Travel</button>                     
+                    <button class="tab-button" data-tab="consumer">Consumer</button>                 
+                </div>                 
+                <div class="checkbox-container" id="stock-checkboxes">
+                    <!-- Stock checkboxes will be added here dynamically -->                    
+                </div>             
+            </div>                          
+            <div class="viz-container">                 
+                <div id="map-container"></div>             
+            </div>         
+        </div>     
+    </div>          
+    <!-- Load Scripts -->     
+    <script src="https://d3js.org/d3.v7.min.js"></script>     
+    <script src="main.js"></script> 
+</body> 
+</html>

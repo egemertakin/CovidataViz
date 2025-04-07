@@ -3,17 +3,17 @@ let covidData = [];
 let stateList = [];
 let selectedState = null;
 let selectedYear = "2020";
-let selectedMonth = "0"; // Default to January
+let selectedMonth = "0"; 
 let selectedMetric = "deaths";
 let colorScale;
 
-// Month names for formatting
+// Month names 
 const monthNames = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
-// Day names for formatting
+// Day names f
 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 // Load the data
@@ -170,7 +170,7 @@ function createCalendarHeatmap(data) {
   const metricKey = selectedMetric === "deaths" ? "newDeaths" : "newCases";
   
   // Create color scale based on the selected metric
-  const maxValue = d3.max(data, d => d[metricKey]) || 1; // Default to 1 if no data
+  const maxValue = d3.max(data, d => d[metricKey]) || 1; 
   
   // Use different color scales for deaths and cases
   if (selectedMetric === "deaths") {
@@ -363,53 +363,99 @@ function showStateSummary(data) {
   dayInfo.innerHTML = html;
 }
 
-// Create legend
+// Create legend with ranges instead of individual values
 function createLegend(data) {
   const legendContainer = document.getElementById("legend");
   legendContainer.innerHTML = "";
   
   // Update legend title
   const legendTitle = document.getElementById("legend-title");
-  legendTitle.textContent = selectedMetric === "deaths" ? "Daily Deaths Legend" : "Daily Cases Legend";
+  legendTitle.textContent = selectedMetric === "deaths" ? "Daily Deaths Range" : "Daily Cases Range";
   
   // Determine the metric to visualize
   const metricKey = selectedMetric === "deaths" ? "newDeaths" : "newCases";
   
   // Get the range of values
-  const maxValue = d3.max(data, d => d[metricKey]) || 1; // Default to 1 if no data
+  const maxValue = d3.max(data, d => d[metricKey]) || 1; 
   
-  // Create a linear scale for the legend
-  const legendScale = d3.scaleLinear()
-    .domain([0, 1])
-    .range([0, maxValue]);
+  // Create ranges for the legend based on the data
+  let ranges = [];
   
-  // Create 5 legend items
-  const numSteps = 5;
+  // Create custom thresholds based on the maximum value
+  if (maxValue <= 5) {
+    // For very small values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 1, label: "1" },
+      { min: 2, max: 2, label: "2" },
+      { min: 3, max: 3, label: "3" },
+      { min: 4, max: maxValue, label: `4+` }
+    ];
+  } else if (maxValue <= 10) {
+    // For small values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 2, label: "1-2" },
+      { min: 3, max: 5, label: "3-5" },
+      { min: 6, max: 9, label: "6-9" },
+      { min: 10, max: maxValue, label: `10+` }
+    ];
+  } else if (maxValue <= 50) {
+    // For medium-small values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 5, label: "1-5" },
+      { min: 6, max: 15, label: "6-15" },
+      { min: 16, max: 30, label: "16-30" },
+      { min: 31, max: maxValue, label: `31+` }
+    ];
+  } else if (maxValue <= 200) {
+    // For medium values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 20, label: "1-20" },
+      { min: 21, max: 50, label: "21-50" },
+      { min: 51, max: 100, label: "51-100" },
+      { min: 101, max: maxValue, label: `101+` }
+    ];
+  } else if (maxValue <= 1000) {
+    // For medium-large values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 100, label: "1-100" },
+      { min: 101, max: 250, label: "101-250" },
+      { min: 251, max: 500, label: "251-500" },
+      { min: 501, max: maxValue, label: `501+` }
+    ];
+  } else {
+    // For large values
+    ranges = [
+      { min: 0, max: 0, label: "0" },
+      { min: 1, max: 500, label: "1-500" },
+      { min: 501, max: 1000, label: "501-1000" },
+      { min: 1001, max: Math.round(maxValue / 2), label: `1001-${Math.round(maxValue / 2).toLocaleString()}` },
+      { min: Math.round(maxValue / 2) + 1, max: maxValue, label: `${(Math.round(maxValue / 2) + 1).toLocaleString()}+` }
+    ];
+  }
   
-  for (let i = 0; i < numSteps; i++) {
-    const t = i / (numSteps - 1);
-    const value = legendScale(t);
-    
+  // Create legend items for each range
+  ranges.forEach(range => {
     const legendItem = document.createElement("div");
     legendItem.className = "legend-item";
     
     const legendColor = document.createElement("div");
     legendColor.className = "legend-color";
-    legendColor.style.backgroundColor = colorScale(value);
+    
+    // Use the middle point of the range for color
+    const midPoint = (range.min + range.max) / 2;
+    legendColor.style.backgroundColor = colorScale(midPoint);
     
     const legendLabel = document.createElement("div");
     legendLabel.className = "legend-label";
-    
-    if (i === 0) {
-      legendLabel.textContent = "0";
-    } else if (i === numSteps - 1) {
-      legendLabel.textContent = `${Math.round(maxValue).toLocaleString()}+`;
-    } else {
-      legendLabel.textContent = Math.round(value).toLocaleString();
-    }
+    legendLabel.textContent = range.label;
     
     legendItem.appendChild(legendColor);
     legendItem.appendChild(legendLabel);
     legendContainer.appendChild(legendItem);
-  }
+  });
 }

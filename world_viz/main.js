@@ -4,7 +4,7 @@ let worldData;
 let dates = [];
 let currentDateIndex = 0;
 let playing = false;
-let animationSpeed = 50; // default fast speed (ms)
+let animationSpeed; 
 let timer;
 let colorScale;
 
@@ -264,12 +264,25 @@ function setupControls() {
     }
   });
 
-  // Speed control
+  // Speed control - FIXED
   const speedSelect = document.getElementById("speed");
+  
+  // Initialize the animation speed from the selected dropdown value
+  animationSpeed = parseInt(speedSelect.value);
+  console.log("Initial animation speed set to:", animationSpeed);
+  
   speedSelect.addEventListener("change", function () {
-    animationSpeed = parseInt(this.value);
+    // Get the new speed directly from the select element
+    const newSpeed = parseInt(this.value);
+    console.log("Animation speed changing from", animationSpeed, "to", newSpeed);
+    
+    // Update the speed variable
+    animationSpeed = newSpeed;
+    
+    // If animation is currently playing, restart it with the new speed
     if (playing) {
       clearInterval(timer);
+      timer = null;
       startAnimation();
     }
   });
@@ -277,7 +290,6 @@ function setupControls() {
 
 function togglePlayPause() {
   const btn = document.getElementById("play-pause");
-  
   
   if (currentDateIndex >= dates.length - 1 && btn.textContent === "Restart") {
     updateMap(0);
@@ -288,25 +300,57 @@ function togglePlayPause() {
   playing = !playing;
   if (playing) {
     btn.textContent = "Pause";
+    // Clear any existing timer before starting animation
+    if (timer) clearInterval(timer);
+    timer = null;
     startAnimation();
   } else {
     btn.textContent = "Play";
     clearInterval(timer);
+    timer = null;
   }
 }
 
 function startAnimation() {
-  timer = setInterval(() => {
-    let nextIndex = currentDateIndex + 1;
-    if (nextIndex >= dates.length) {
-      // Stop at the end and change button to "Restart"
-      clearInterval(timer);
-      playing = false;
-      document.getElementById("play-pause").textContent = "Restart";
-      return;
+  // Make sure we don't have multiple timers running
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+  
+  console.log("Starting animation with speed:", animationSpeed, "ms");
+  
+  // Use requestAnimationFrame for smoother animation with very fast speeds
+  let lastUpdateTime = 0;
+  
+  function animate(timestamp) {
+    if (!playing) return; // Stop if no longer playing
+    
+    const elapsed = timestamp - lastUpdateTime;
+    
+    // Only update when enough time has passed based on animation speed
+    if (elapsed >= animationSpeed) {
+      lastUpdateTime = timestamp;
+      
+      let nextIndex = currentDateIndex + 1;
+      if (nextIndex >= dates.length) {
+        // Stop at the end and change button to "Restart"
+        playing = false;
+        document.getElementById("play-pause").textContent = "Restart";
+        return;
+      }
+      
+      updateMap(nextIndex);
     }
-    updateMap(nextIndex);
-  }, animationSpeed);
+    
+    // Continue animation loop if still playing
+    if (playing) {
+      requestAnimationFrame(animate);
+    }
+  }
+  
+  // Start the animation loop
+  requestAnimationFrame(animate);
 }
 
 // Add zoom functionality with initial zoom level that fits everything

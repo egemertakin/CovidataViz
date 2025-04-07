@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COVID-19 Calendar Heatmap</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>COVID-19 Calendar Heatmap</h1>
+    
+    <div class="data-type-indicator">
+      Daily new cases/deaths 
+    </div>
+    
+    <div class="main-content">
+      <!-- Left Column: Controls -->
+      <div class="controls-column">
+        <div class="control-group">
+          <label for="state-select">Select State:</label>
+          <select id="state-select"></select>
+        </div>
+        
+        <div class="control-group">
+          <label for="year-select">Select Year:</label>
+          <select id="year-select">
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <label for="month-select">Select Month:</label>
+          <select id="month-select">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+          </select>
+        </div>
+        
+        <div class="control-group">
+          <label for="metric-select">Select Metric:</label>
+          <select id="metric-select">
+            <option value="deaths">Daily Deaths</option>
+            <option value="cases">Daily Cases</option>
+          </select>
+        </div>
+        
+        <div class="legend-container">
+          <h3 id="legend-title">Daily Deaths Range</h3>
+          <div id="legend"></div>
+        </div>
+      </div>
+      
+      <!-- Center Column: Calendar -->
+      <div class="calendar-column">
+        <div id="calendar-heatmap"></div>
+      </div>
+      
+      <!-- Right Column: Info Panel -->
+      <div class="info-column">
+        <div class="info-panel">
+          <h3>Selected Day Information</h3>
+          <div id="day-info">
+            <p>Hover over a day to see details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

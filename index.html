@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Contagion Chronicle: Visual Story of COVID-19's Spread and Impact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+ 
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="presentation-container">
+    <!-- Navigation dots -->
+    <div class="nav-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+      <span class="dot" data-slide="4"></span>
+      <span class="dot" data-slide="5"></span>
+      <span class="dot" data-slide="6"></span>
+      <span class="dot" data-slide="7"></span>
+      <span class="dot" data-slide="8"></span>
+      <span class="dot" data-slide="9"></span>
+      <span class="dot" data-slide="10"></span>
+      <span class="dot" data-slide="11"></span>
+      <span class="dot" data-slide="12"></span>
+      <span class="dot" data-slide="13"></span>
+      <span class="dot" data-slide="14"></span>
+      <span class="dot" data-slide="15"></span>
+    </div>
+
+    <!-- Navigation arrows -->
+    <div class="nav-arrow prev-arrow">&#8592;</div>
+    <div class="nav-arrow next-arrow">&#8594;</div>
+
+    <!-- Cover Slide -->
+    <section class="slide text-slide" id="cover">
+      <div class="slide-content">
+        <h1>The Contagion Chronicle</h1>
+        <h2>A Visual Journey Through COVID-19's Impact in US</h2>
+        <div class="team-info">
+          <p>University of Toronto</p>
+          <p>Team: Covidata Viz</p>
+        </div>
+        <div class="scroll-hint">
+          <p>Navigate using the dots at the top or side arrows</p>
+          <div class="arrow-down"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Introduction Slide -->
+    <section class="slide text-slide" id="introduction">
+      <div class="slide-content">
+        <h2>The Questions We Asked</h2>
+        <div class="quote-box">
+          <p>"Have you ever wondered why some regions seem hit harder than others?"</p>
+        </div>
+        <div class="key-questions">
+          <p>Our investigation explores these critical dimensions of the pandemic:</p>
+          <ul>
+            <li>How did COVID-19 spread globally over time?</li>
+            <li>What patterns emerged across different US states?</li>
+            <li>How did the pandemic evolve day-by-day within regions?</li>
+            <li>What was the economic impact of fluctuations in cases and deaths?</li>
+            <li>How did demographic factors influence mortality rates?</li>
+            <li>What relationship exists between vaccination rates and cases?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Map Viz -->
+    <section class="slide viz-slide" id="world-viz">
+      <iframe src="world_viz/index_world.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- World Map Insight -->
+    <section class="slide text-slide" id="world-insight">
+      <div class="slide-content">
+        <h2>Global Patterns Revealed</h2>
+        <div class="insight-container">
+          <p>The animation reveals stark disparities in COVID-19's global impact:</p>
+          
+          <!-- Impact factor cards -->
+          <div class="impact-cards">
+            <div class="impact-card">
+              <div class="card-icon">🌎</div>
+              <div class="card-content">
+                <h3>Asynchronous Spread</h3>
+                <p>The pandemic did not impact all regions simultaneously - geographical spread followed travel patterns and containment measures</p>
+              </div>
+            </div>
+            
+            <div class="impact-card">
+              <div class="card-icon">🔬</div>
+              <div class="card-content">
+                <h3>Testing Disparities</h3>
+                <p>Variations in testing capacity created significant data discrepancies between countries</p>
+              </div>
+            </div>
+            
+            <div class="impact-card">
+              <div class="card-icon">🏝️</div>
+              <div class="card-content">
+                <h3>Geographic Isolation</h3>
+                <p>Island nations and countries with early restrictions often showed delayed or reduced impact</p>
+              </div>
+            </div>
+            
+            <div class="impact-card">
+              <div class="card-icon">🏥</div>
+              <div class="card-content">
+                <h3>Healthcare Factors</h3>
+                <p>Death counts reflected not just infection rates but also healthcare capacity and demographic factors</p>
+              </div>
+            </div>
+          </div>
+          
+          <p>But what happens when we zoom in to examine patterns within a single country?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- US Map Viz -->
+    <section class="slide viz-slide" id="us-viz">
+      <iframe src="us_viz/index_us.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- US Map Insight -->
+    <section class="slide text-slide" id="us-insight">
+      <div class="slide-content">
+        <h2>The United States: A Patchwork Pandemic</h2>
+        <div class="insight-container">
+          <p>The US map reveals significant regional variation:</p>
+          
+          <!-- Regional variation diagram -->
+          <div class="regional-diagram">
+            <div class="diagram-row">
+              <div class="diagram-cell population">
+                <div class="diagram-icon">👥</div>
+                <h3>Population Centers</h3>
+                <p>Initially experienced higher case counts, but normalized data shows surprising patterns</p>
+              </div>
+              <div class="diagram-cell normalization">
+                <div class="diagram-icon">📊</div>
+                <h3>State-level Disparities</h3>
+                <p>COVID-19 metrics emphasize the importance of normalizing by population size</p>
+              </div>
+            </div>
+            <div class="diagram-row">
+              <div class="diagram-cell vaccination">
+                <div class="diagram-icon">💉</div>
+                <h3>Vaccination Rollouts</h3>
+                <p>Varied dramatically across states, correlating with demographic and political factors</p>
+              </div>
+              <div class="diagram-cell healthcare">
+                <div class="diagram-icon">🏥</div>
+                <h3>Case-Death Relationship</h3>
+                <p>Varied by state, suggesting differences in healthcare capacity and population vulnerability</p>
+              </div>
+            </div>
+          </div>
+          
+          <p>But to truly understand the pandemic's rhythm, we need to examine its day-by-day progression...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar Heatmap Viz -->
+    <section class="slide viz-slide" id="calendar-viz">
+      <iframe src="calender_heatmap/index_calender.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- Calendar Insight -->
+    <section class="slide text-slide" id="calendar-insight">
+      <div class="slide-content">
+        <h2>The Pandemic's Rhythm and Waves</h2>
+        <div class="insight-container">
+          <p>The calendar heatmap unveils temporal patterns of the pandemic:</p>
+          
+          <!-- Wave pattern visualization -->
+          <div class="wave-patterns">
+            <div class="wave seasonal">
+              <div class="wave-visual winter"></div>
+              <div class="wave-info">
+                <h3>Seasonal Waves</h3>
+                <p>Clear waves of infection follow seasonal patterns, with winter months showing higher transmission</p>
+              </div>
+            </div>
+            
+            <div class="wave weekly">
+              <div class="wave-visual weekend"></div>
+              <div class="wave-info">
+                <h3>Reporting Rhythms</h3>
+                <p>Weekend reporting lags create weekly micro-patterns that reveal data collection challenges</p>
+              </div>
+            </div>
+            
+            <div class="wave holiday">
+              <div class="wave-visual holiday"></div>
+              <div class="wave-info">
+                <h3>Holiday Effects</h3>
+                <p>Holiday gatherings often preceded spikes in multiple regions, highlighting the impact of behavioral factors</p>
+              </div>
+            </div>
+            
+            <div class="wave treatment">
+              <div class="wave-visual treatment"></div>
+              <div class="wave-info">
+                <h3>Treatment Progress</h3>
+                <p>The lag between case increases and death increases shortened over time as treatment protocols improved</p>
+              </div>
+            </div>
+          </div>
+          
+          <p>These patterns weren't confined to health metrics - what happened to the economy?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Economic Impact Viz -->
+    <section class="slide viz-slide" id="economic-viz">
+      <iframe src="stocks_viz/index_stocks.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- Economic Insight -->
+    <section class="slide text-slide" id="economic-insight">
+      <div class="slide-content">
+        <h2>Economic Indicators Mirror Public Health Outcomes</h2>
+        <div class="insight-container">
+          <p>Market reactions revealed the interconnected nature of health and economic outcomes:</p>
+          
+          <!-- Economic indicators chart -->
+          <div class="economic-indicators">
+            <div class="indicator travel-down">
+              <div class="indicator-trend down">↓</div>
+              <div class="indicator-info">
+                <h3>Travel & Hospitality</h3>
+                <p>Showed immediate responsive declines to rising case numbers</p>
+              </div>
+            </div>
+            
+            <div class="indicator health-up">
+              <div class="indicator-trend up">↑</div>
+              <div class="indicator-info">
+                <h3>Healthcare & Technology</h3>
+                <p>Demonstrated inverse relationships to pandemic severity</p>
+              </div>
+            </div>
+            
+            <div class="indicator lag">
+              <div class="indicator-trend lag">↔️</div>
+              <div class="indicator-info">
+                <h3>Economic Recovery</h3>
+                <p>Often lagged behind health metrics, with variations across sectors</p>
+              </div>
+            </div>
+            
+            <div class="indicator volatility">
+              <div class="indicator-trend volatile">↕️</div>
+              <div class="indicator-info">
+                <h3>Market Volatility</h3>
+                <p>Correlated strongly with uncertainty in public health messaging</p>
+              </div>
+            </div>
+          </div>
+          
+          <p>But which populations were most affected by these changes?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demographic Factors Viz -->
+    <section class="slide viz-slide" id="demographic-viz">
+      <iframe src="diverging_bar_chart/index_diverging.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- Demographic Insight -->
+    <section class="slide text-slide" id="demographic-insight">
+      <div class="slide-content">
+        <h2>Demographic Factors: Who Was Most Vulnerable?</h2>
+        <div class="insight-container">
+          <p>Demographic analysis reveals critical patterns in vulnerability:</p>
+          
+          <!-- Vulnerability factors visualization -->
+          <div class="vulnerability-factors">
+            <div class="factor-scale">
+              <div class="scale-label">Impact on Mortality</div>
+              <div class="scale-bar">
+                <div class="scale-point low">Low</div>
+                <div class="scale-point medium">Medium</div>
+                <div class="scale-point high">High</div>
+              </div>
+            </div>
+            
+            <div class="factor age">
+              <div class="factor-icon">👵</div>
+              <div class="factor-bar high"></div>
+              <div class="factor-info">
+                <h3>Age Distribution</h3>
+                <p>Strongest predictor of mortality rates across regions</p>
+              </div>
+            </div>
+            
+            <div class="factor elderly">
+              <div class="factor-icon">🏙️</div>
+              <div class="factor-bar high"></div>
+              <div class="factor-info">
+                <h3>Elderly Population</h3>
+                <p>States with higher percentages of elderly residents experienced higher case fatality rates</p>
+              </div>
+            </div>
+            
+            <div class="factor health">
+              <div class="factor-icon">❤️</div>
+              <div class="factor-bar medium-high"></div>
+              <div class="factor-info">
+                <h3>Pre-existing Conditions</h3>
+                <p>Showed a significant multiplier effect on COVID-19 severity</p>
+              </div>
+            </div>
+            
+            
+          </div>
+          
+          <p>Given these vulnerabilities, how effective were vaccination efforts at protecting populations?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vaccination Impact Viz -->
+    <section class="slide viz-slide" id="vaccination-viz">
+      <iframe src="cases_vis/index_cases.html" class="viz-iframe" frameborder="0"></iframe>
+    </section>
+
+    <!-- Vaccination Insight -->
+    <section class="slide text-slide" id="vaccination-insight">
+      <div class="slide-content">
+        <h2>Vaccination: The Turning Point</h2>
+        <div class="insight-container">
+          <p>The data reveals the critical impact of vaccination efforts:</p>
+          
+          <!-- Vaccination impact visualization -->
+          <div class="vaccination-impact">
+            <div class="impact-timeline">
+              <div class="timeline-marker"></div>
+              <div class="timeline-point vaccine-intro">
+                <div class="point-label">Vaccine Introduction</div>
+              </div>
+            </div>
+            
+            <div class="impact-comparison">
+              <div class="comparison-column before">
+                <h3>Before Widespread Vaccination</h3>
+                <div class="status-indicator high">
+                  <div class="indicator-dot red"></div>
+                  <p>Steady increase in deaths</p>
+                </div>
+              </div>
+              
+              <div class="comparison-column after">
+                <h3>After Widespread Vaccination</h3>
+                <div class="status-indicator green">
+                  <div class="indicator-dot green"></div>
+                  <p>Lower mortality only after everyone is fully vaccinated</p>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
+          
+          <p>These insights point to actionable strategies for future pandemic response...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="slide text-slide" id="conclusion">
+      <div class="slide-content">
+        <h2>Data-Driven Insights for Future Pandemics</h2>
+        <div class="conclusion-container">
+          <p>Our analysis reveals these key findings:</p>
+          
+          <!-- Sequential insight flowchart -->
+          <div class="sequential-chart">
+            <div class="sequential-item">
+              <div class="sequential-number">1</div>
+              <div class="sequential-content">
+                <h3>Vaccination Impact</h3>
+                <p>State-level disparities in COVID-19 vaccination rates are closely linked to higher mortality in under-vaccinated regions</p>
+              </div>
+              <div class="sequential-arrow">→</div>
+            </div>
+            
+            <div class="sequential-item">
+              <div class="sequential-number">2</div>
+              <div class="sequential-content">
+                <h3>Demographic Factors</h3>
+                <p>Age distribution and other demographic factors significantly impact regional severity</p>
+              </div>
+              <div class="sequential-arrow">→</div>
+            </div>
+            
+            <div class="sequential-item">
+              <div class="sequential-number">3</div>
+              <div class="sequential-content">
+                <h3>Predictive Patterns</h3>
+                <p>Time-series analysis reveals patterns that can help predict and respond to future waves</p>
+              </div>
+              <div class="sequential-arrow">→</div>
+            </div>
+            
+            <div class="sequential-item">
+              <div class="sequential-number">4</div>
+              <div class="sequential-content">
+                <h3>Targeted Interventions</h3>
+                <p>Public health interventions show clear effectiveness when properly targeted</p>
+              </div>
+            </div>
+          </div>
+          
+          <p class="conclusion-quote">"By identifying and focusing resources on states with low vaccination uptake and high mortality, public health officials can tailor outreach and mitigate future outbreaks."</p>
+          <div class="team-signature">
+            <p>— Team Covidata Viz</p>
+            <p>University of Toronto</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Data Sources Slide -->
+    <section class="slide text-slide" id="data-sources">
+      <div class="slide-content">
+        <h2>Data Sources</h2>
+        <div class="sources-container">
+          <ul class="sources-list">
+            <li>
+              <strong>JHU COVID-19 Data:</strong> Johns Hopkins University. (2020–2023). <em>COVID-19 Data Repository by the Center for Systems Science and Engineering (CSSE)</em> [Data set]. GitHub. <a href="https://github.com/CSSEGISandData/COVID-19">https://github.com/CSSEGISandData/COVID-19</a>
+            </li>
+            <li>
+              <strong>JHU COVID-19 Data Repository:</strong> Johns Hopkins University. (2020–2023). <em>COVID-19 Data Repository</em> [Data set]. GitHub. <a href="https://github.com/govex/COVID-19/tree/master">https://github.com/govex/COVID-19/tree/master</a>
+            </li>
+            <li>
+              <strong>CDC – Conditions Contributing to COVID-19 Deaths:</strong> Centers for Disease Control and Prevention. (2023). <em>Conditions Contributing to COVID-19 Deaths, by State and Age, Provisional 2020–2023</em> [Data set]. U.S. Department of Health & Human Services. <a href="https://data.cdc.gov/">https://data.cdc.gov/</a>
+            </li>
+            <li>
+              <strong>WHO Coronavirus Dashboard Data:</strong> World Health Organization. (2023). <em>WHO Coronavirus (COVID-19) Dashboard: Data</em> [Data set]. <a href="https://data.who.int/dashboards/covid19/data">https://data.who.int/dashboards/covid19/data</a>
+            </li>
+            <li>
+              <strong>Nasdaq S&P 500 Data:</strong> Nasdaq, Inc. (n.d.). <em>S&P 500</em> [Data set]. Nasdaq. <a href="https://www.nasdaq.com">https://www.nasdaq.com</a>
+            </li>
+            <li>
+              <strong>EODHD Calendar and News API:</strong> EOD Historical Data. (n.d.). <em>Calendar and News API</em> [Data set]. EODHD. <a href="https://eodhd.com/lp/calendar-and-news-api">https://eodhd.com/lp/calendar-and-news-api</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

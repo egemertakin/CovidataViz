@@ -1,4 +1,4 @@
-// Global variables
+
 let covidData = [];
 let states = [];
 let conditions = [];
@@ -678,6 +678,9 @@ function updateChart(previousSelection) {
   // Update insights panel
   updateInsights(aggregatedData);
 }
+
+
+
 
 // Update insights panel
 function updateInsights(data) {

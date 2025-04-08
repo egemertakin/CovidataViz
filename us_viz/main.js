@@ -1,4 +1,4 @@
-// Global variables
+
 let statesData;
 let deathsData = [];
 let allDates = [];
@@ -20,6 +20,8 @@ const svg = d3.select("#map-container")
   .attr("height", "100%")
   .attr("viewBox", `0 0 ${width} ${height}`)
   .attr("preserveAspectRatio", "xMidYMid meet");
+
+
 
 // Add background color to the map
 svg.append("rect")
@@ -67,7 +69,7 @@ Promise.all([
 }).catch(error => {
   console.error("Error loading data:", error);
   document.getElementById("map-container").innerHTML = 
-    `<div class="error">Error loading data. Please check console for details.</div>`;
+    `<div class="error">Error loading data.</div>`;
 });
 
 function processDeathsData(data) {
@@ -109,6 +111,9 @@ function processDeathsData(data) {
   
   return processedData;
 }
+
+
+
 
 function initViz() {
   // Draw the states
@@ -314,6 +319,9 @@ function updateMap() {
     });
 }
 
+
+
+
 function handleStateClick(event, d) {
   selectedState = d;
   
@@ -420,6 +428,8 @@ function createLegend() {
   updateLegend();
   updateLegendTitle();
 }
+
+
 
 function updateLegend() {
   const legendContainer = d3.select("#legend");

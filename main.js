@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
+
+
     // Animation timing 
     if (slides[currentSlide].id === 'world-insight') {
       animateCards();
@@ -308,6 +310,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+  
+
   
   // Allow iframes to be fully responsive
   function resizeIframes() {

@@ -58,7 +58,7 @@ p {
   height: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
-  overflow: hidden; /* Changed from overflow-y: auto to prevent scrolling */
+  overflow: hidden; 
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -87,14 +87,16 @@ p {
   overflow: hidden;
 }
 
-/* Data Sources Slide - Allow Scrolling */
+
+
+
 #data-sources .slide-content {
   overflow-y: auto;
   max-height: 90vh;
   padding-bottom: 2rem;
 }
 
-/* Ensure the slide itself is positioned properly */
+
 #data-sources.slide {
   overflow: visible;
 }

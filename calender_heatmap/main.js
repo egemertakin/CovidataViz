@@ -1,4 +1,4 @@
-// Global variables
+
 let covidData = [];
 let stateList = [];
 let selectedState = null;
@@ -7,21 +7,21 @@ let selectedMonth = "0";
 let selectedMetric = "deaths";
 let colorScale;
 
-// Month names 
+
 const monthNames = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
-// Day names f
+
 const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-// Load the data
+
 d3.csv("../data/merged_deaths.csv").then(data => {
   covidData = processData(data);
   stateList = Array.from(new Set(covidData.map(d => d.state_abbrev))).sort();
   
-  // Populate state dropdown
+  
   populateStateDropdown();
   
   // Set default selections
@@ -33,15 +33,15 @@ d3.csv("../data/merged_deaths.csv").then(data => {
   // Initialize visualization
   updateVisualization();
   
-  // Set up event listeners
+  
   setupEventListeners();
 }).catch(error => {
   console.error("Error loading data:", error);
   document.getElementById("calendar-heatmap").innerHTML = 
-    `<div class="error">Error loading data. Please check console for details.</div>`;
+    `<div class="error">Error loading data. </div>`;
 });
 
-// Process the data
+
 function processData(data) {
   return data.map(d => {
     // Parse date

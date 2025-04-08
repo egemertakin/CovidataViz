@@ -110,7 +110,7 @@ function initViz() {
             console.error("Error loading data:", error);
             document.getElementById("map-container")
                 .innerHTML =
-                `<div class="error">Error loading data. Please check console for details.</div>`;
+                `<div class="error">Error loading data.</div>`;
         });
 }
 
@@ -146,6 +146,9 @@ function processData(stocks, covid, sp500) {
         }
     });
 }
+
+
+
 
 function setupTabButtons() {
     // Handle tab switching
@@ -210,7 +213,7 @@ function setupStockControls(activeTab = 'market-index') {
                 checkboxDiv.append("input")
                     .attr("type", "checkbox")
                     .attr("id", `checkbox-${symbol}`)
-                    .property("checked", isChecked) // Use property() instead of attr() for dynamic setting
+                    .property("checked", isChecked) 
                     .on("change", function() {
                         if (this.checked) {
                             activeStocks.add(symbol);
@@ -291,6 +294,9 @@ function updateScales() {
         ])
         .range([height, 0]);
 }
+
+
+
 
 function drawAxes() {
     // Clear previous axes
@@ -425,10 +431,10 @@ function addLabels() {
         .style("font-size", "12px")
         .text("New COVID-19 Cases");
 
-    // Add Y-axis right label - moved closer to the axis
+    // Add Y-axis right label 
     svg.append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", width + margin.right - 45) // Reduced from -15 to -45 to move label closer to axis
+        .attr("y", width + margin.right - 45) 
         .attr("x", -height / 2)
         .attr("dy", "1em")
         .style("text-anchor", "middle")
@@ -477,7 +483,7 @@ function addLegend() {
     // Add stock lines to legend
     let currentY = 30;
     
-    // Start with S&P500 if visible
+    // Start with S&P500 
     if (showSP500) {
         legend.append("line")
             .attr("x1", 0)

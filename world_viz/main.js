@@ -1,4 +1,4 @@
-// Global variables
+
 let covidData = [];
 let worldData;
 let dates = [];
@@ -29,11 +29,13 @@ const tooltip = d3.select("body")
   .attr("class", "tooltip")
   .style("opacity", 0);
 
-// Projection and path generator - adjusted scale to ensure fit
+// Projection and path generator 
 const projection = d3.geoNaturalEarth1()
   .scale((width * 0.9) / 2 / Math.PI)
   .translate([width / 2, height / 2]);
 const path = d3.geoPath().projection(projection);
+
+
 
 // Country name mapping
 let countryNameMap = {};
@@ -140,6 +142,9 @@ function initViz() {
 }
 
 
+
+
+
 function updateMap(dateIndex) {
   currentDateIndex = dateIndex;
   const currentDate = dates[dateIndex];
@@ -159,7 +164,7 @@ function updateMap(dateIndex) {
     document.getElementById("play-pause").textContent = "Play";
   }
 
-  // Update map colors immediately (no transition for speed)
+  // Update map colors immediately 
   g.selectAll(".country")
     .attr("fill", function (d) {
       
@@ -264,7 +269,7 @@ function setupControls() {
     }
   });
 
-  // Speed control - FIXED
+  // Speed control 
   const speedSelect = document.getElementById("speed");
   
   // Initialize the animation speed from the selected dropdown value
